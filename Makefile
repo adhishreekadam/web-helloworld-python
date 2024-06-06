@@ -51,6 +51,9 @@ sbom-policy-gen:
 publish-service-policy:
 	hzn exchange service addpolicy -f service.policy.json $(HZN_ORG_ID)/$(SERVICE_NAME)_$(SERVICE_VERSION)_$(ARCH)
 
+publish-deployment-policy:
+	hzn exchange deployment addpolicy -f deployment.policy.json $(HZN_ORG_ID)/policy-$(SERVICE_NAME)_$(SERVICE_VERSION)
+
 
 test: run
 	@echo "=================="
