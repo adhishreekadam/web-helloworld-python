@@ -48,6 +48,9 @@ sbom-policy-gen:
 	@echo "=================="
 	./sbom-property-gen.sh
 
+publish-service-policy:
+	hzn exchange service addpolicy -f service.policy.json $(HZN_ORG_ID)/$(SERVICE_NAME)_$(SERVICE_VERSION)_$(ARCH)
+
 
 test: run
 	@echo "=================="
@@ -78,8 +81,6 @@ publish-pattern:
         PATTERN_NAME="$(PATTERN_NAME)" \
 	hzn exchange pattern publish -f pattern.json
 
-publish-service-policy:
-	hzn exchange service addpolicy -f service.policy.json $(HZN_ORG_ID)/$(SERVICE_NAME)_$(SERVICE_VERSION)_$(ARCH)
 
 stop:
 	@docker rm -f ${SERVICE_NAME} >/dev/null 2>&1 || :
